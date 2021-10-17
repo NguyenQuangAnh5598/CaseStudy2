@@ -2,11 +2,12 @@ package model;
 
 public class Transcript {
     private String idOfStudent;
-    private Math math;
+    private StudenTranscipt studenTranscipt;
 
-    public Transcript(String idOfStudent, Math math) {
+    public Transcript(String idOfStudent, StudenTranscipt studenTranscipt) {
         this.idOfStudent = idOfStudent;
-        this.math = math;
+        this.studenTranscipt = studenTranscipt;
+
     }
 
     public String getIdOfStudent() {
@@ -17,19 +18,19 @@ public class Transcript {
         this.idOfStudent = idOfStudent;
     }
 
-    public Math getMath() {
-        return math;
+    public StudenTranscipt getStudenTranscipt() {
+        return studenTranscipt;
     }
 
-    public void setMath(Math math) {
-        this.math = math;
+    public void setStudenTranscipt(StudenTranscipt studenTranscipt) {
+        this.studenTranscipt = studenTranscipt;
     }
 
     @Override
     public String toString() {
         return "Transcript { " +
                 " idOfStudent = '" + idOfStudent + '\'' +
-                " , math = " + math +
+                " " + studenTranscipt +
                 " }";
     }
 }
