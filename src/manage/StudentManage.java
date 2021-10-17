@@ -10,7 +10,7 @@ public class StudentManage {
     public static void checkscrore(String studentId) {
         for (int i = 0; i < transcriptList.size() ; i++) {
             if (studentId.equals(transcriptList.get(i).getIdOfStudent())) {
-                System.out.println(transcriptList.get(i).getMath());
+                System.out.println(transcriptList.get(i).getStudenTranscipt());
             }
         }
 
