@@ -27,4 +27,11 @@ public class Student {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Name = '" + name + '\'' +
+                ", StudentID = '" + id + '\'' +
+                " }";
+    }
 }

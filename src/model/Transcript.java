@@ -28,9 +28,6 @@ public class Transcript {
 
     @Override
     public String toString() {
-        return "Transcript { " +
-                " idOfStudent = '" + idOfStudent + '\'' +
-                " " + studenTranscipt +
-                " }";
+        return "Transcript { " + studenTranscipt + " }";
     }
 }

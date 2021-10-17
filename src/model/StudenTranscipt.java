@@ -1,30 +1,20 @@
 package model;
 
 public class StudenTranscipt {
-    private String studentName;
-    private String studentID;
+    private Student student;
     private Math math;
 
-    public StudenTranscipt(String studentName, String studentID, Math math) {
-        this.studentName = studentName;
-        this.studentID = studentID;
+    public StudenTranscipt(Student student, Math math) {
+        this.student = student;
         this.math = math;
     }
 
-    public String getStudentName() {
-        return studentName;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentName(String studentName) {
-        this.studentName = studentName;
-    }
-
-    public String getStudentID() {
-        return studentID;
-    }
-
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     public Math getMath() {
@@ -33,5 +23,13 @@ public class StudenTranscipt {
 
     public void setMath(Math math) {
         this.math = math;
+    }
+
+    @Override
+    public String toString() {
+        return "StudenTranscipt { " +
+                "student = " + student +
+                ", math=" + math +
+                '}';
     }
 }
