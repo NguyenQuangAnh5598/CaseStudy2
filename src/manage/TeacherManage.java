@@ -1,6 +1,5 @@
 package manage;
 
-import model.Math;
 import model.StudenTranscipt;
 import model.Student;
 

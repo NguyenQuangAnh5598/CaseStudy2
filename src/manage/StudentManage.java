@@ -1,7 +1,6 @@
 package manage;
 
 import model.StudenTranscipt;
-import model.Transcript;
 
 import java.util.ArrayList;
 import java.util.List;
