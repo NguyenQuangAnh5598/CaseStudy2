@@ -66,5 +66,17 @@ public class StudentTransciptManage {
         return subjectList.get(getSubjectIndex(subjectList, subjectName));
     }
 
+    public int getSumScores(List<SubjectGeneric<Subjects, Integer>> subjectList) {
+        int sum = 0;
+        for (int i = 0; i < subjectList.size(); i++) {
+            sum += subjectList.get(i).getScores();
+        }
+        return sum;
+    }
 
+    public double getAverageScores(List<SubjectGeneric<Subjects, Integer>> subjectList) {
+       int sum = getSumScores(subjectList);
+       double averageScores = sum/(subjectList.size());
+       return averageScores;
+    }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentManage {
-    private static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+    StudentTransciptManage studentTransciptManage = new StudentTransciptManage();
 
     public static List<StudenTranscipt> getStudenTransciptList() {
         return studenTransciptList;
