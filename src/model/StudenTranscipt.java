@@ -26,4 +26,12 @@ public class StudenTranscipt {
     public void setStudentSubjectList(List<SubjectGeneric<Subjects, Integer>> studentSubjectList) {
         this.studentSubjectList = studentSubjectList;
     }
+
+    @Override
+    public String toString() {
+        return "StudenTranscipt { " +
+                "student = " + student +
+                ", studentSubjectList = " + studentSubjectList +
+                " }";
+    }
 }
