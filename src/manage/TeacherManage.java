@@ -1,38 +1,33 @@
 package manage;
 
+
 import model.StudenTranscipt;
 import model.Student;
 import model.SubjectGeneric;
+import model.Subjects;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherManage {
-    private static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+    private StudentTransciptManage studentTransciptManage = new StudentTransciptManage();
 
-    public static List<StudenTranscipt> getStudenTransciptList() {
-        return studenTransciptList;
+    public StudenTranscipt checkStudentInfo(String id) {
+        StudenTranscipt studentInfo = studentTransciptManage.getStudentInfo(id);
+        return studentInfo;
     }
 
-    public static void setStudenTransciptList(List<StudenTranscipt> studenTransciptList) {
-        TeacherManage.studenTransciptList = studenTransciptList;
+    public void addNewStudent(Student student, List<SubjectGeneric<Subjects, Integer>> subjectGenericList) {
+        studentTransciptManage.addStudent(student, subjectGenericList);
     }
 
-    public static void checkStudentInfo(String studentId) {
-        for (int i = 0; i < studenTransciptList.size(); i++) {
-            if (studentId.equals(studenTransciptList.get(i).getStudent().getId())) {
-                System.out.println(studenTransciptList.get(i));
-            }
-        }
+    public void addNewSubject(List<SubjectGeneric<Subjects, Integer>> subjectList, Subjects subjects, int scores) {
+        studentTransciptManage.addNewSubject(subjectList, subjects, scores);
     }
 
-    public static void setStudent(String studentId, SubjectGeneric subjectGeneric, Student student) {
-        for (int i = 0; i < studenTransciptList.size(); i++) {
-            if (studentId.equals(studenTransciptList.get(i).getStudent().getId())) {
-                studenTransciptList.get(i).setStudent(student);
-                studenTransciptList.get(i).sets(subjectGeneric);
-            }
-        }
+    public void setSubjectScores(String subjectName, int scores,String id) {
+        studentTransciptManage.setScores(subjectName,scores,id);
     }
+
+
 
 }
