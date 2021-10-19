@@ -1,12 +1,14 @@
 package model;
 
+import java.util.List;
+
 public class StudenTranscipt {
     private Student student;
-    private Math math;
+    private List<SubjectGeneric<Subjects, Integer>> studentSubjectList;
 
-    public StudenTranscipt(Student student, Math math) {
+    public StudenTranscipt(Student student, List<SubjectGeneric<Subjects, Integer>> studentSubjectList) {
         this.student = student;
-        this.math = math;
+        this.studentSubjectList = studentSubjectList;
     }
 
     public Student getStudent() {
@@ -17,19 +19,11 @@ public class StudenTranscipt {
         this.student = student;
     }
 
-    public Math getMath() {
-        return math;
+    public List<SubjectGeneric<Subjects, Integer>> getStudentSubjectList() {
+        return studentSubjectList;
     }
 
-    public void setMath(Math math) {
-        this.math = math;
-    }
-
-    @Override
-    public String toString() {
-        return "StudenTranscipt { " +
-                "student = " + student +
-                ", math=" + math +
-                '}';
+    public void setStudentSubjectList(List<SubjectGeneric<Subjects, Integer>> studentSubjectList) {
+        this.studentSubjectList = studentSubjectList;
     }
 }
