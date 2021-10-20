@@ -25,6 +25,8 @@ public class TeacherMenu {
             System.out.println("6.Chỉnh sửa tên Học sinh");
             System.out.println("7.Xóa Học sinh");
             System.out.println("8.Xóa Môn học");
+            System.out.println("9.Xem tổng điểm các môn của học sinh qua ID");
+            System.out.println("10.Xem điểm Trung bình các môn của học sinh qua ID");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1 :
@@ -50,6 +52,12 @@ public class TeacherMenu {
                     break;
                 case 8 :
                     deleteSubjectOfStudent();
+                    break;
+                case 9 :
+                    getSumScroresOfStudentByID();
+                    break;
+                case 10 :
+                    getAverageScoresOfStudentByID();
                     break;
             }
         } while (choice != 0 ) ;

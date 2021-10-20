@@ -23,8 +23,8 @@ public class StudentManage {
         return sumScores;
     }
 
-    public double getAverageScoresByID(List<SubjectGeneric<Subjects, Integer>> subjectList, String id) {
-        double averageScores = studentTransciptManage.getAverageScoresByID(subjectList, id);
+    public double getAverageScoresByID(String id) {
+        double averageScores = studentTransciptManage.getAverageScoresByID(id);
         return averageScores;
     }
 }

@@ -47,26 +47,6 @@ public class TeacherManage {
         return sumScores;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public double getAverageScoresOfStudentByID(String id) {
         double averageScores = studentTransciptManage.getAverageScoresByID(id);
         return averageScores;
