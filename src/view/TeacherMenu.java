@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TeacherMenu {
-    static TeacherManage teacherManage = new TeacherManage();
+    static TeacherManage teacherManage = TeacherManage.getInstance();
     public static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
 
     public static void menu() {

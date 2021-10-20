@@ -9,7 +9,20 @@ import model.Subjects;
 import java.util.List;
 
 public class TeacherManage {
-    private StudentTransciptManage studentTransciptManage = new StudentTransciptManage();
+     StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();
+
+    private TeacherManage() {
+    }
+    private static TeacherManage teacherManage;
+
+    public static  TeacherManage getInstance() {
+        if (teacherManage == null) {
+            teacherManage = new TeacherManage();
+        }
+        return teacherManage;
+    }
+
+
 
     public StudenTranscipt checkStudentInfo(String id) {
         StudenTranscipt studentInfo = studentTransciptManage.getStudentInfo(id);

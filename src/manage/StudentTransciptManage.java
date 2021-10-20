@@ -5,11 +5,23 @@ import model.Student;
 import model.SubjectGeneric;
 import model.Subjects;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentTransciptManage {
+    private List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+    private StudentTransciptManage(List<StudenTranscipt> studenTransciptList) {
+        this.studenTransciptList = studenTransciptList;
+    }
 
-    private List<StudenTranscipt> studenTransciptList;
+    private static StudentTransciptManage studentTransciptManage = new StudentTransciptManage(getInstance().studenTransciptList);
+
+    public static StudentTransciptManage getInstance() {
+        if (studentTransciptManage == null) {
+            studentTransciptManage = new StudentTransciptManage(getInstance().studenTransciptList);
+        }
+        return studentTransciptManage;
+    }
 
     public int getStudentIndex(String id) {
         int index = 0;
@@ -56,19 +68,19 @@ public class StudentTransciptManage {
     }
 
 
-    public void addNewSubject(Subjects subjects, int scores,String id) {
+    public void addNewSubject(Subjects subjects, int scores, String id) {
         List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
         studentSubjectList.add(new SubjectGeneric<>(subjects, scores));
     }
 
     public SubjectGeneric<Subjects, Integer> deleteSubject(String id, String subjectName) {
         List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
-        studentSubjectList.remove(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(),subjectName));
-        return studentSubjectList.get(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(),subjectName));
+        studentSubjectList.remove(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(), subjectName));
+        return studentSubjectList.get(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(), subjectName));
     }
 
     public int getSumScoresByID(String id) {
-       List<SubjectGeneric<Subjects,Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
+        List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
         int sum = 0;
         for (int i = 0; i < studentSubjectList.size(); i++) {
             sum += studentSubjectList.get(i).getScores();
@@ -78,7 +90,7 @@ public class StudentTransciptManage {
 
     public double getAverageScoresByID(String id) {
         int sum = getSumScoresByID(id);
-        List<SubjectGeneric<Subjects,Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
+        List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
         double averageScores = sum / (studentSubjectList.size());
         return averageScores;
     }

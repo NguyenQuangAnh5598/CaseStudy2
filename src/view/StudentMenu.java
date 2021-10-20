@@ -9,10 +9,10 @@ import java.util.Scanner;
 
 public class StudentMenu {
     public static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
-  static   StudentManage studentManage = new StudentManage();
+    static StudentManage studentManage = StudentManage.getInstance();
 
     public static void menu() {
-        Scanner scanner= new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
             System.out.println("--------MENU--------");
@@ -24,20 +24,20 @@ public class StudentMenu {
 
             choice = scanner.nextInt();
             switch (choice) {
-                case 1 :
+                case 1:
                     checkInfoByID();
                     break;
-                case 2 :
+                case 2:
                     setNameByID();
                     break;
-                case 3 :
+                case 3:
                     getSumScroresByID();
                     break;
-                case 4 :
+                case 4:
                     getAverageScoresOfStudentByID();
                     break;
             }
-        } while (choice != 0 ) ;
+        } while (choice != 0);
     }
 
     public static void checkInfoByID() {
@@ -57,6 +57,7 @@ public class StudentMenu {
         String name = scan.nextLine();
         studentManage.setName(id, name);
     }
+
     public static void getSumScroresByID() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID của bạn vào đây: ");

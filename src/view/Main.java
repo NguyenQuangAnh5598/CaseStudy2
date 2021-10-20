@@ -1,5 +1,7 @@
 package view;
 
+import manage.StudentManage;
+import manage.StudentTransciptManage;
 import model.StudenTranscipt;
 import model.Student;
 
@@ -9,6 +11,7 @@ import java.util.Scanner;
 
 public class Main {
     public List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+
 
     public static void main(String[] args) {
         Scanner scanner= new Scanner(System.in);

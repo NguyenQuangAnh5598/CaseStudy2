@@ -1,12 +1,23 @@
 package manage;
 
 import model.StudenTranscipt;
-import model.SubjectGeneric;
-import model.Subjects;
 
-import java.util.List;
 
 public class StudentManage {
+    StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();
+
+    private StudentManage() {
+    }
+
+    private static StudentManage studentManage;
+
+    public static StudentManage getInstance() {
+        if (studentManage == null) {
+            studentManage = new StudentManage();
+        }
+        return studentManage;
+    }
+
     public StudenTranscipt checkInfo(String id) {
         StudenTranscipt studentInfo = studentTransciptManage.getStudentInfo(id);
         return studentInfo;
@@ -16,7 +27,7 @@ public class StudentManage {
         studentTransciptManage.setStudentName(studentName, id);
     }
 
-    private StudentTransciptManage studentTransciptManage = new StudentTransciptManage();
+
 
     public int getSumScroresByID(String id) {
         int sumScores = studentTransciptManage.getSumScoresByID(id);
