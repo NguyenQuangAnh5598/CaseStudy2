@@ -42,7 +42,7 @@ public class StudentTransciptManage {
     }
 
 
-    public void setStudentName(String studentName, String id) {
+    public void setStudentName(String id, String studentName) {
         studenTransciptList.get(getStudentIndex(id)).getStudent().setName(studentName);
     }
 
@@ -56,11 +56,12 @@ public class StudentTransciptManage {
     }
 
 
-    public void addNewSubject(List<SubjectGeneric<Subjects, Integer>> subjectList, Subjects subjects, int scores) {
-        subjectList.add(new SubjectGeneric<>(subjects, scores));
+    public void addNewSubject(Subjects subjects, int scores,String id) {
+        List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
+        studentSubjectList.add(new SubjectGeneric<>(subjects, scores));
     }
 
-    public SubjectGeneric<Subjects, Integer> deleteSubject(String subjectName, String id) {
+    public SubjectGeneric<Subjects, Integer> deleteSubject(String id, String subjectName) {
         List<SubjectGeneric<Subjects, Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
         studentSubjectList.remove(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(),subjectName));
         return studentSubjectList.get(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(),subjectName));
@@ -75,9 +76,10 @@ public class StudentTransciptManage {
         return sum;
     }
 
-    public double getAverageScoresByID(List<SubjectGeneric<Subjects, Integer>> subjectList,String id) {
+    public double getAverageScoresByID(String id) {
         int sum = getSumScoresByID(id);
-        double averageScores = sum / (subjectList.size());
+        List<SubjectGeneric<Subjects,Integer>> studentSubjectList = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList();
+        double averageScores = sum / (studentSubjectList.size());
         return averageScores;
     }
 }

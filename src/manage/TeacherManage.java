@@ -20,16 +20,16 @@ public class TeacherManage {
         studentTransciptManage.addStudent(student, subjectGenericList);
     }
 
-    public void addNewSubject(List<SubjectGeneric<Subjects, Integer>> subjectList, Subjects subjects, int scores) {
-        studentTransciptManage.addNewSubject(subjectList, subjects, scores);
+    public void addNewSubject(Subjects subjects, int scores,String id) {
+        studentTransciptManage.addNewSubject(subjects, scores,id);
     }
 
     public void setSubjectScores(String id, String subjectName, int scores) {
         studentTransciptManage.setScoresInStudentTranscriptObject(id, subjectName, scores);
     }
 
-    public void setStudentName(String studentName, String id) {
-        studentTransciptManage.setStudentName(studentName, id);
+    public void setStudentName(String id, String studentName) {
+        studentTransciptManage.setStudentName(id, studentName);
     }
 
     public StudenTranscipt deleteStudent(String id) {
@@ -37,8 +37,8 @@ public class TeacherManage {
         return deletedStudent;
     }
 
-    public SubjectGeneric<Subjects, Integer> deletedSubjectOfStudent(String subjectName, String id) {
-        SubjectGeneric<Subjects, Integer> deletedSubject = studentTransciptManage.deleteSubject(subjectName, id);
+    public SubjectGeneric<Subjects, Integer> deletedSubjectOfStudent( String id,String subjectName) {
+        SubjectGeneric<Subjects, Integer> deletedSubject = studentTransciptManage.deleteSubject(id,subjectName);
         return deletedSubject;
     }
 
@@ -47,8 +47,28 @@ public class TeacherManage {
         return sumScores;
     }
 
-    public double getAverageScoresOfStudentByID(List<SubjectGeneric<Subjects, Integer>> subjectList, String id) {
-        double averageScores = studentTransciptManage.getAverageScoresByID(subjectList, id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public double getAverageScoresOfStudentByID(String id) {
+        double averageScores = studentTransciptManage.getAverageScoresByID(id);
         return averageScores;
     }
 
