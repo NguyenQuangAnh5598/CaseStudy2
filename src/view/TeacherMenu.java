@@ -8,23 +8,67 @@ import java.util.List;
 import java.util.Scanner;
 
 public class TeacherMenu {
-    TeacherManage teacherManage = new TeacherManage();
-    public List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+    static TeacherManage teacherManage = new TeacherManage();
+    public static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
 
-    public void printStudentTranscriptList() {
+    public static void menu() {
+        Scanner scanner= new Scanner(System.in);
+        int choice = -1;
+        do {
+            System.out.println("--------MENU--------");
+            System.out.println("0.Exit");
+            System.out.println("1.In Bảng Điểm");
+            System.out.println("2.Lấy Thông tin học sinh bằng ID");
+            System.out.println("3.Tạo mới Học sinh");
+            System.out.println("4.Tạo thêm môn học ");
+            System.out.println("5.Chỉnh sửa điểm môn học");
+            System.out.println("6.Chỉnh sửa tên Học sinh");
+            System.out.println("7.Xóa Học sinh");
+            System.out.println("8.Xóa Môn học");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1 :
+                    printStudentTranscriptList();
+                    break;
+                case 2 :
+                    getStudentInfo();
+                    break;
+                case 3 :
+                    addNewStudent();
+                    break;
+                case 4 :
+                    addNewSubject();
+                    break;
+                case 5 :
+                    setSubjectScores();
+                    break;
+                case 6 :
+                    setStudentName();
+                    break;
+                case 7 :
+                    deleteStudent();
+                    break;
+                case 8 :
+                    deleteSubjectOfStudent();
+                    break;
+            }
+        } while (choice != 0 ) ;
+
+    }
+    public static void printStudentTranscriptList() {
         for (StudenTranscipt x : studenTransciptList) {
             System.out.println(x);
         }
     }
 
-    public void getStudentInfo() {
+    public static void getStudentInfo() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID học sinh mà bạn muốn xem thông tin:");
         String id = scanner.nextLine();
         teacherManage.checkStudentInfo(id);
     }
 
-    public void addNewStudent() {
+    public static void addNewStudent() {
         Scanner scanner = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
 
@@ -39,7 +83,7 @@ public class TeacherMenu {
         teacherManage.addNewStudent(student, subjectGenericList);
     }
 
-    public void addNewSubject() {
+    public static void addNewSubject() {
         Scanner scanner = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
 
@@ -55,7 +99,7 @@ public class TeacherMenu {
         teacherManage.addNewSubject(subjects, scores, id);
     }
 
-    public void setSubjectScores() {
+    public static void setSubjectScores() {
         Scanner scanner = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
 
@@ -69,7 +113,7 @@ public class TeacherMenu {
         teacherManage.setSubjectScores(id, subjectName, scores);
     }
 
-    public void setStudentName() {
+    public static void setStudentName() {
         Scanner scanner = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
 
@@ -81,7 +125,7 @@ public class TeacherMenu {
         teacherManage.setStudentName(id, name);
     }
 
-    public void deleteStudent() {
+    public static void deleteStudent() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID học sinh muốn xóa: ");
         String id = scanner.nextLine();
@@ -89,7 +133,7 @@ public class TeacherMenu {
         System.out.println("Đã xóa bảng điểm : " + deletedStudent);
     }
 
-    public void deleteSubjectOfStudent() {
+    public static void deleteSubjectOfStudent() {
         Scanner scanner = new Scanner(System.in);
         Scanner scan = new Scanner(System.in);
 
@@ -101,7 +145,7 @@ public class TeacherMenu {
         System.out.println("Đã xóa môn học :" + deletedSubject);
     }
 
-    public void getSumScroresOfStudentByID() {
+    public static void getSumScroresOfStudentByID() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID học sinh muốn tính Tổng điểm các môn: ");
         String id = scanner.nextLine();
@@ -110,7 +154,7 @@ public class TeacherMenu {
         System.out.println("Tổng điểm các môn của học sinh có mã ID: " + id + " là " + sumScores + " điểm");
     }
 
-    public void getAverageScoresOfStudentByID() {
+    public static void getAverageScoresOfStudentByID() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID học sinh muốn tính điểm Trung Bình các môn: ");
         String id = scanner.nextLine();
