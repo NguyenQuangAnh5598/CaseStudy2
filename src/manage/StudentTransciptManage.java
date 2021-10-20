@@ -21,7 +21,7 @@ public class StudentTransciptManage {
         return index;
     }
 
-    public void SetScoresInStudentTranscriptObject(String id, String subjectName, int scores) {
+    public void setScoresInStudentTranscriptObject(String id, String subjectName, int scores) {
         SubjectGeneric setSubject = studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList().get(getSubjectIndex(studenTransciptList.get(getStudentIndex(id)).getStudentSubjectList(), subjectName));
         setSubject.setScores(scores);
     }
