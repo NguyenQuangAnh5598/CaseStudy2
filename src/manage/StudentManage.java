@@ -2,6 +2,8 @@ package manage;
 
 import model.StudenTranscipt;
 
+import java.io.IOException;
+
 
 public class StudentManage {
     StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();

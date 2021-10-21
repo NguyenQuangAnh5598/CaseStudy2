@@ -3,6 +3,7 @@ package view;
 import manage.StudentManage;
 import model.StudenTranscipt;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,31 +14,35 @@ public class StudentMenu {
 
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
-        int choice = -1;
-        do {
-            System.out.println("--------MENU--------");
-            System.out.println("0.Exit");
-            System.out.println("1.Xem thông tin của bạn ");
-            System.out.println("2.Chỉnh tên");
-            System.out.println("3.Xem Tổng điểm của các môn");
-            System.out.println("4.Xem Điểm Trung Bình của các môn");
+        try {
+            int choice;
+            do {
+                System.out.println("--------MENU--------");
+                System.out.println("0.Exit");
+                System.out.println("1.Xem thông tin của bạn ");
+                System.out.println("2.Chỉnh tên");
+                System.out.println("3.Xem Tổng điểm của các môn");
+                System.out.println("4.Xem Điểm Trung Bình của các môn");
 
-            choice = scanner.nextInt();
-            switch (choice) {
-                case 1:
-                    checkInfoByID();
-                    break;
-                case 2:
-                    setNameByID();
-                    break;
-                case 3:
-                    getSumScroresByID();
-                    break;
-                case 4:
-                    getAverageScoresOfStudentByID();
-                    break;
-            }
-        } while (choice != 0);
+                choice = scanner.nextInt();
+                switch (choice) {
+                    case 1:
+                        checkInfoByID();
+                        break;
+                    case 2:
+                        setNameByID();
+                        break;
+                    case 3:
+                        getSumScroresByID();
+                        break;
+                    case 4:
+                        getAverageScoresOfStudentByID();
+                        break;
+                }
+            } while (choice != 0);
+        } catch (Exception e) {
+            System.out.println("Nhập sai rồi !!");
+        }
     }
 
     public static void checkInfoByID() {
