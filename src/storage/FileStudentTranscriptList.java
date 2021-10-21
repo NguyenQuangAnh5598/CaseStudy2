@@ -6,20 +6,20 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FileTeacherManager {
-    private static FileTeacherManager fileTeacherManager;
+public class FileStudentTranscriptList {
+    private static FileStudentTranscriptList fileStudentTranscriptList;
 
-    public FileTeacherManager() {
+    public FileStudentTranscriptList() {
     }
 
-    public static FileTeacherManager getInstance() {
-        if (fileTeacherManager == null) {
-            fileTeacherManager = new FileTeacherManager();
+    public static FileStudentTranscriptList getInstance() {
+        if (fileStudentTranscriptList == null) {
+            fileStudentTranscriptList = new FileStudentTranscriptList();
         }
-        return fileTeacherManager;
+        return fileStudentTranscriptList;
     }
 
-    public List<StudenTranscipt> readFile() throws IOException,ClassNotFoundException {
+    public List<StudenTranscipt> readFile() throws IOException, ClassNotFoundException {
         File file = new File("StudentTranscriptList.txt");
         if (!file.exists()) {
             file.createNewFile();
@@ -32,8 +32,7 @@ public class FileTeacherManager {
             objectInputStream.close();
             fileInputStream.close();
             return studenTransciptList;
-        }
-        else return new ArrayList<>();
+        } else return new ArrayList<>();
     }
 
     public void writeFile(List<StudenTranscipt> studenTransciptList) {
@@ -46,6 +45,5 @@ public class FileTeacherManager {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

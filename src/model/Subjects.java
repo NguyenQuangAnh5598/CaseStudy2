@@ -1,6 +1,8 @@
 package model;
 
-public class Subjects {
+import java.io.Serializable;
+
+public class Subjects implements Serializable {
     private String subjectName;
 
 
@@ -14,5 +16,10 @@ public class Subjects {
 
     public void setSubjectName(String subjectName) {
         this.subjectName = subjectName;
+    }
+
+    @Override
+    public String toString() {
+        return " SubjectName = '" + subjectName + '\'';
     }
 }

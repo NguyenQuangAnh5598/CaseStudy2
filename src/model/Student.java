@@ -1,6 +1,8 @@
 package model;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     private String name;
     private String id;
 
@@ -30,8 +32,8 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Name = '" + name + '\'' +
-                ", StudentID = '" + id + '\'' +
+        return " Name = '" + name + '\'' +
+                " , StudentID = '" + id + '\'' +
                 " }";
     }
 }

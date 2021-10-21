@@ -2,10 +2,11 @@ package manage;
 
 import model.StudenTranscipt;
 
-import java.io.IOException;
+
+import java.io.Serializable;
 
 
-public class StudentManage {
+public class StudentManage implements Serializable {
     StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();
 
     private StudentManage() {
@@ -40,4 +41,15 @@ public class StudentManage {
         double averageScores = studentTransciptManage.getAverageScoresByID(id);
         return averageScores;
     }
+
+    public StudenTranscipt sortScoresFromBigToSmallByID(String id) {
+        StudenTranscipt studenTranscipt = studentTransciptManage.sortScoresFromBigToSmallByID(id);
+        return studenTranscipt;
+    }
+
+    public StudenTranscipt sortScoresFromSmallToBigByID(String id) {
+        StudenTranscipt studenTranscipt = studentTransciptManage.sortScoresFromSmallToBigByID(id);
+        return studenTranscipt;
+    }
+
 }

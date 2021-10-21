@@ -6,23 +6,24 @@ import model.Student;
 import model.SubjectGeneric;
 import model.Subjects;
 
-import java.io.IOException;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class TeacherManage {
-     StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();
+public class TeacherManage implements Serializable {
+    StudentTransciptManage studentTransciptManage = StudentTransciptManage.getInstance();
 
     private TeacherManage() {
     }
+
     private static TeacherManage teacherManage;
 
-    public static  TeacherManage getInstance() {
+    public static TeacherManage getInstance() {
         if (teacherManage == null) {
             teacherManage = new TeacherManage();
         }
         return teacherManage;
     }
-
 
 
     public StudenTranscipt checkStudentInfo(String id) {
@@ -34,8 +35,8 @@ public class TeacherManage {
         studentTransciptManage.addStudent(student, subjectGenericList);
     }
 
-    public void addNewSubject(Subjects subjects, int scores,String id) {
-        studentTransciptManage.addNewSubject(subjects, scores,id);
+    public void addNewSubject(Subjects subjects, int scores, String id) {
+        studentTransciptManage.addNewSubject(subjects, scores, id);
     }
 
     public void setSubjectScores(String id, String subjectName, int scores) {
@@ -51,8 +52,8 @@ public class TeacherManage {
         return deletedStudent;
     }
 
-    public SubjectGeneric<Subjects, Integer> deletedSubjectOfStudent( String id,String subjectName) {
-        SubjectGeneric<Subjects, Integer> deletedSubject = studentTransciptManage.deleteSubject(id,subjectName);
+    public SubjectGeneric<Subjects, Integer> deletedSubjectOfStudent(String id, String subjectName) {
+        SubjectGeneric<Subjects, Integer> deletedSubject = studentTransciptManage.deleteSubject(id, subjectName);
         return deletedSubject;
     }
 
@@ -64,6 +65,16 @@ public class TeacherManage {
     public double getAverageScoresOfStudentByID(String id) {
         double averageScores = studentTransciptManage.getAverageScoresByID(id);
         return averageScores;
+    }
+
+    public StudenTranscipt sortScoresFromBigToSmallByID(String id) {
+        StudenTranscipt studenTranscipt = studentTransciptManage.sortScoresFromBigToSmallByID(id);
+        return studenTranscipt;
+    }
+
+    public StudenTranscipt sortScoresFromSmallToBigByID(String id) {
+        StudenTranscipt studenTranscipt = studentTransciptManage.sortScoresFromSmallToBigByID(id);
+        return studenTranscipt;
     }
 
 }

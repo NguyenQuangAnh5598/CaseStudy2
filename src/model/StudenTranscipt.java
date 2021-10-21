@@ -1,10 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class StudenTranscipt {
+public class StudenTranscipt implements Serializable {
     private Student student;
     private List<SubjectGeneric<Subjects, Integer>> studentSubjectList;
+    private SubjectGeneric<Subjects,Integer> subjectGeneric;
 
     public StudenTranscipt(Student student, List<SubjectGeneric<Subjects, Integer>> studentSubjectList) {
         this.student = student;
@@ -29,9 +31,10 @@ public class StudenTranscipt {
 
     @Override
     public String toString() {
-        return "StudenTranscipt { " +
-                "student = " + student +
-                ", studentSubjectList = " + studentSubjectList +
+        return "\nStudenTranscipt { " +
+                "Student : " + student +
+                 studentSubjectList +
+                  subjectGeneric +
                 " }";
     }
 }

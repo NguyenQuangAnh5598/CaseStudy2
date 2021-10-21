@@ -1,6 +1,8 @@
 package model;
 
-public class SubjectGeneric<U,N> {
+import java.io.Serializable;
+
+public class SubjectGeneric<U,N> implements Serializable {
     private U subject;
     private N scores;
 
@@ -23,5 +25,12 @@ public class SubjectGeneric<U,N> {
 
     public void setScores(N scores) {
         this.scores = scores;
+    }
+
+    @Override
+    public String toString() {
+        return "{ Subject = " + subject +
+                " , Scores = " + scores +
+                " }";
     }
 }

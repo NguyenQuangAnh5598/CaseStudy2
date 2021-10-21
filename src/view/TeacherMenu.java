@@ -1,74 +1,80 @@
 package view;
 
+import manage.StudentTransciptManage;
 import manage.TeacherManage;
 import model.*;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class TeacherMenu {
+public class TeacherMenu implements Serializable {
     static TeacherManage teacherManage = TeacherManage.getInstance();
-    public static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
 
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
-        try {
-            int choice;
-            do {
-                System.out.println("--------MENU--------");
-                System.out.println("0.Exit");
-                System.out.println("1.In Bảng Điểm");
-                System.out.println("2.Lấy Thông tin học sinh bằng ID");
-                System.out.println("3.Tạo mới Học sinh");
-                System.out.println("4.Tạo thêm môn học ");
-                System.out.println("5.Chỉnh sửa điểm môn học");
-                System.out.println("6.Chỉnh sửa tên Học sinh");
-                System.out.println("7.Xóa Học sinh");
-                System.out.println("8.Xóa Môn học");
-                System.out.println("9.Xem tổng điểm các môn của học sinh qua ID");
-                System.out.println("10.Xem điểm Trung bình các môn của học sinh qua ID");
-                choice = scanner.nextInt();
-                switch (choice) {
-                    case 1:
-                        printStudentTranscriptList();
-                        break;
-                    case 2:
-                        getStudentInfo();
-                        break;
-                    case 3:
-                        addNewStudent();
-                        break;
-                    case 4:
-                        addNewSubject();
-                        break;
-                    case 5:
-                        setSubjectScores();
-                        break;
-                    case 6:
-                        setStudentName();
-                        break;
-                    case 7:
-                        deleteStudent();
-                        break;
-                    case 8:
-                        deleteSubjectOfStudent();
-                        break;
-                    case 9:
-                        getSumScroresOfStudentByID();
-                        break;
-                    case 10:
-                        getAverageScoresOfStudentByID();
-                        break;
-                }
-            } while (choice != 0);
-        } catch (Exception e) {
-            System.out.println("Nhập sai rồi !!");
-        }
+        int choice;
+        do {
+            System.out.println("--------MENU--------");
+            System.out.println("0.Exit");
+            System.out.println("1.In Bảng Điểm");
+            System.out.println("2.Lấy Thông tin học sinh bằng ID");
+            System.out.println("3.Tạo mới Học sinh");
+            System.out.println("4.Tạo thêm môn học ");
+            System.out.println("5.Chỉnh sửa điểm môn học");
+            System.out.println("6.Chỉnh sửa tên Học sinh");
+            System.out.println("7.Xóa Học sinh");
+            System.out.println("8.Xóa Môn học");
+            System.out.println("9.Xem tổng điểm các môn của học sinh qua ID");
+            System.out.println("10.Xem điểm Trung bình các môn của học sinh qua ID");
+            System.out.println("11.Sắp xếp Bảng điểm từ Cao xuống thấp");
+            System.out.println("12.Sắp xếp Bảng điểm từ Thấp lên cao");
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 1:
+                    printStudentTranscriptList();
+                    break;
+                case 2:
+                    getStudentInfo();
+                    break;
+                case 3:
+                    addNewStudent();
+                    break;
+                case 4:
+                    addNewSubject();
+                    break;
+                case 5:
+                    setSubjectScores();
+                    break;
+                case 6:
+                    setStudentName();
+                    break;
+                case 7:
+                    deleteStudent();
+                    break;
+                case 8:
+                    deleteSubjectOfStudent();
+                    break;
+                case 9:
+                    getSumScroresOfStudentByID();
+                    break;
+                case 10:
+                    getAverageScoresOfStudentByID();
+                    break;
+                case 11:
+                    sortScoresFromSmallToBigByStudentID();
+                    break;
+                case 12:
+                    sortScoresFromBigToSmallByStudentID();
+            }
+        } while (choice != 0);
+
     }
+
     public static void printStudentTranscriptList() {
-        for (StudenTranscipt x : studenTransciptList) {
+        for (StudenTranscipt x : StudentTransciptManage.getStudenTransciptList()) {
             System.out.println(x);
         }
     }
@@ -77,7 +83,7 @@ public class TeacherMenu {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập ID học sinh mà bạn muốn xem thông tin:");
         String id = scanner.nextLine();
-        teacherManage.checkStudentInfo(id);
+        System.out.println(teacherManage.checkStudentInfo(id));
     }
 
     public static void addNewStudent() {
@@ -173,6 +179,24 @@ public class TeacherMenu {
 
         double averageScores = teacherManage.getAverageScoresOfStudentByID(id);
         System.out.println("Điểm Trung Bình các môn học của Học sinh có mã ID: " + id + " là " + averageScores + " điểm");
+    }
+
+    public static void sortScoresFromBigToSmallByStudentID() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ID học sinh muốn sắp xếp lại bảng điểm");
+        String id = scanner.nextLine();
+
+        StudenTranscipt studenTranscipt = teacherManage.sortScoresFromBigToSmallByID(id);
+        System.out.println(studenTranscipt);
+    }
+
+    public static void sortScoresFromSmallToBigByStudentID() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ID học sinh muốn sắp xếp lại bảng điểm");
+        String id = scanner.nextLine();
+
+        StudenTranscipt studenTranscipt = teacherManage.sortScoresFromSmallToBigByID(id);
+        System.out.println(studenTranscipt);
     }
 
 }

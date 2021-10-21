@@ -3,13 +3,11 @@ package view;
 import manage.StudentManage;
 import model.StudenTranscipt;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+
 import java.util.Scanner;
 
-public class StudentMenu {
-    public static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+public class StudentMenu implements Serializable {
     static StudentManage studentManage = StudentManage.getInstance();
 
     public static void menu() {
@@ -23,6 +21,8 @@ public class StudentMenu {
                 System.out.println("2.Chỉnh tên");
                 System.out.println("3.Xem Tổng điểm của các môn");
                 System.out.println("4.Xem Điểm Trung Bình của các môn");
+                System.out.println("5.Sắp xếp điểm từ cao xuống thấp");
+                System.out.println("6.Sắp xếp điểm từ thấp lên cao");
 
                 choice = scanner.nextInt();
                 switch (choice) {
@@ -37,6 +37,12 @@ public class StudentMenu {
                         break;
                     case 4:
                         getAverageScoresOfStudentByID();
+                        break;
+                    case 5 :
+                        sortScoresFromSmallToBigByStudentID();
+                        break;
+                    case 6 :
+                        sortScoresFromSmallToBigByStudentID();
                         break;
                 }
             } while (choice != 0);
@@ -79,5 +85,23 @@ public class StudentMenu {
 
         double averageScores = studentManage.getAverageScoresByID(id);
         System.out.println("Điểm Trung Bình các môn học của bạn là " + averageScores + " điểm");
+    }
+
+    public static void sortScoresFromBigToSmallByStudentID() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ID học sinh muốn sắp xếp lại bảng điểm");
+        String id = scanner.nextLine();
+
+        StudenTranscipt studenTranscipt = studentManage.sortScoresFromBigToSmallByID(id);
+        System.out.println(studenTranscipt);
+    }
+
+    public static void sortScoresFromSmallToBigByStudentID() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập ID học sinh muốn sắp xếp lại bảng điểm");
+        String id = scanner.nextLine();
+
+        StudenTranscipt studenTranscipt = studentManage.sortScoresFromSmallToBigByID(id);
+        System.out.println(studenTranscipt);
     }
 }
