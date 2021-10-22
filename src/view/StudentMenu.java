@@ -15,7 +15,7 @@ public class StudentMenu implements Serializable {
         try {
             int choice;
             do {
-                System.out.println("--------MENU--------");
+                System.out.println("~~~~~~~~~~~~~~~~~~~~~~~STUDENT-MENU~~~~~~~~~~~~~~~~~~~~~~~");
                 System.out.println("0.Exit");
                 System.out.println("1.Xem thông tin của bạn ");
                 System.out.println("2.Chỉnh tên");
@@ -23,6 +23,7 @@ public class StudentMenu implements Serializable {
                 System.out.println("4.Xem Điểm Trung Bình của các môn");
                 System.out.println("5.Sắp xếp điểm từ cao xuống thấp");
                 System.out.println("6.Sắp xếp điểm từ thấp lên cao");
+                System.out.println("Your Choine is : ");
 
                 choice = scanner.nextInt();
                 switch (choice) {

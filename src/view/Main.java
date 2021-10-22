@@ -19,11 +19,11 @@ public class Main implements Serializable {
         Scanner scanner = new Scanner(System.in);
         int choice = -1;
         do {
-            System.out.println("--------MENU--------");
+            System.out.println("~~~~~~~~~~~~~~~~~MENU~~~~~~~~~~~~~~~~~");
             System.out.println("1.Giáo Viên");
             System.out.println("2.Học Sinh");
             System.out.println("0.Exit");
-            System.out.println("Bạn chọn:");
+            System.out.println("Your Choine is : ");
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:

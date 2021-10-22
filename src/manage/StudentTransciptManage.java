@@ -12,6 +12,7 @@ import java.util.List;
 
 public class StudentTransciptManage implements Serializable {
     private static List<StudenTranscipt> studenTransciptList = new ArrayList<>();
+
     private FileStudentTranscriptList fileStudentTranscriptList = FileStudentTranscriptList.getInstance();
 
     private StudentTransciptManage(List<StudenTranscipt> studenTransciptList) {
@@ -37,7 +38,7 @@ public class StudentTransciptManage implements Serializable {
     }
 
     public int getStudentIndexByID(String id) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < studenTransciptList.size(); i++) {
             if (id.equals(studenTransciptList.get(i).getStudent().getId())) {
                 index = i;
@@ -47,7 +48,7 @@ public class StudentTransciptManage implements Serializable {
     }
 
     public int getSubjectIndexBySubjectName(List<SubjectGeneric<Subjects, Integer>> studentSubjectList, String subjectName) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < studentSubjectList.size(); i++) {
             if (subjectName.equals(studentSubjectList.get(i).getSubject().getSubjectName())) {
                 index = i;
@@ -150,6 +151,23 @@ public class StudentTransciptManage implements Serializable {
         }
         fileStudentTranscriptList.writeFile(studenTransciptList);
         return studenTranscipt;
+    }
+
+    public static List<StudenTranscipt> sortListByNameFromUpToDown() {
+        boolean check = true;
+        for (int i = 0; i < studenTransciptList.size()-1 && check==true; i++) {
+            check = false;
+            for (int j = 0; j < studenTransciptList.size()-1-i; j++) {
+                if (studenTransciptList.get(i).getStudent().getName().compareTo(studenTransciptList.get(i).getStudent().getName()) >0) {
+                    StudenTranscipt temp = studenTransciptList.get(j);
+                    StudenTranscipt temp1 = studenTransciptList.get(j+1);
+                    studenTransciptList.set(j,temp1);
+                    studenTransciptList.set(j+1,temp);
+                    check = true;
+                }
+            }
+        }
+        return studenTransciptList;
     }
 
 }

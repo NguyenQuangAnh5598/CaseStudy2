@@ -77,4 +77,8 @@ public class TeacherManage implements Serializable {
         return studenTranscipt;
     }
 
+    public List<StudenTranscipt> sortListByNameFromUpToDown() {
+        List<StudenTranscipt> newStudenyTranscriptList = StudentTransciptManage.sortListByNameFromUpToDown();
+       return newStudenyTranscriptList;
+    }
 }

@@ -17,20 +17,23 @@ public class TeacherMenu implements Serializable {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
-            System.out.println("--------MENU--------");
-            System.out.println("0.Exit");
-            System.out.println("1.In Bảng Điểm");
-            System.out.println("2.Lấy Thông tin học sinh bằng ID");
-            System.out.println("3.Tạo mới Học sinh");
-            System.out.println("4.Tạo thêm môn học ");
-            System.out.println("5.Chỉnh sửa điểm môn học");
-            System.out.println("6.Chỉnh sửa tên Học sinh");
-            System.out.println("7.Xóa Học sinh");
-            System.out.println("8.Xóa Môn học");
-            System.out.println("9.Xem tổng điểm các môn của học sinh qua ID");
-            System.out.println("10.Xem điểm Trung bình các môn của học sinh qua ID");
-            System.out.println("11.Sắp xếp Bảng điểm từ Cao xuống thấp");
-            System.out.println("12.Sắp xếp Bảng điểm từ Thấp lên cao");
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~TEACHER-MENU~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.println("  0.Exit");
+            System.out.println("  1.In Bảng Điểm");
+            System.out.println("  2.Lấy Thông tin học sinh bằng ID");
+            System.out.println("  3.Tạo mới Học sinh");
+            System.out.println("  4.Tạo thêm môn học ");
+            System.out.println("  5.Chỉnh sửa điểm môn học");
+            System.out.println("  6.Chỉnh sửa tên Học sinh");
+            System.out.println("  7.Xóa Học sinh");
+            System.out.println("  8.Xóa Môn học");
+            System.out.println("  9.Xem tổng điểm các môn của học sinh qua ID");
+            System.out.println("  10.Xem điểm Trung bình các môn của học sinh qua ID");
+            System.out.println("  11.Sắp xếp Bảng điểm từ Cao xuống thấp");
+            System.out.println("  12.Sắp xếp Bảng điểm từ Thấp lên cao");
+            System.out.println("  13.Sắp xếp Bảng điểm theo tên học sinh");
+            System.out.println("Your Choine is : ");
+
             choice = scanner.nextInt();
             switch (choice) {
                 case 1:
@@ -68,6 +71,9 @@ public class TeacherMenu implements Serializable {
                     break;
                 case 12:
                     sortScoresFromBigToSmallByStudentID();
+                    break;
+                case 13 :
+                    sortListByNameFromUpToDown();
             }
         } while (choice != 0);
 
@@ -94,7 +100,16 @@ public class TeacherMenu implements Serializable {
         String studentName = scanner.nextLine();
         System.out.println("Nhập ID học sinh:");
         String studentID = scan.nextLine();
-        Student student = new Student(studentName, studentID);
+        for (int i = 0; i < StudentTransciptManage.getStudenTransciptList().size(); i++) {
+            if (studentID.equals(StudentTransciptManage.getStudenTransciptList().get(i).getStudent().getId())) {
+                System.out.println("ID bị trùng rồi nhập ID khác thôi");
+                System.out.println("Nhập lại ID : ");
+                studentID = scanner.nextLine();
+                break;
+            }
+        }
+
+                Student student = new Student(studentName, studentID);
 
         List<SubjectGeneric<Subjects, Integer>> subjectGenericList = new ArrayList<>();
 
@@ -199,4 +214,8 @@ public class TeacherMenu implements Serializable {
         System.out.println(studenTranscipt);
     }
 
+    public static void sortListByNameFromUpToDown() {
+        List<StudenTranscipt> newStudenyTranscriptList = teacherManage.sortListByNameFromUpToDown();
+        System.out.println(newStudenyTranscriptList);
+    }
 }
